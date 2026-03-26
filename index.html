@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BILT TRACKER</title>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const type = urlParams.get('type');
+        const id = urlParams.get('id');
+
+        if (type && id) {
+            window.location.href = `bilttracker://${type}?id=${id}`;
+
+            setTimeout(() => {
+                document.getElementById('message').innerText = "Si la app no se abre automáticamente, asegúrate de tenerla instalada o haz clic en el botón de abajo.";
+            }, 3000);
+        } else {
+            document.getElementById('message').innerText = "Enlace inválido.";
+        }
+    </script>
+    <style>
+        body { background-color: #121212; color: #FFFFFF; text-align: center; font-family: Arial, sans-serif; padding-top: 50px; }
+        .btn { display: inline-block; padding: 12px 24px; background-color: #EA580C; color: white; text-decoration: none; border-radius: 8px; font-weight: bold; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <img src="https://raw.githubusercontent.com/expo/expo/main/templates/expo-template-blank/assets/icon.png" width="100" style="border-radius: 20px;">
+    <h2 id="message">Abriendo BILT TRACKER... 🏋️‍♂️</h2>
+    
+    <script>
+        if (type && id) {
+            document.write(`<a href="bilttracker://${type}?id=${id}" class="btn">Abrir Aplicación</a>`);
+        }
+    </script>
+</body>
+</html>
